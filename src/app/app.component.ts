@@ -20,7 +20,7 @@ import { TstudentPage } from '../pages/tstudent/tstudent';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = 'LoginPage';
 
   pagesDiscretas: Array<{title: string, component: any}>;
   pagesContinuas: Array<{title: string, component: any}>;
