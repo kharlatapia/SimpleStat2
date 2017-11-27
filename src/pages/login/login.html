@@ -1,13 +1,27 @@
 <ion-header>
-  <ion-navbar color="primary">
+    <ion-navbar color="home-navbar">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+  
       <ion-title>
-          Ingresar
+        <img src="assets/imgs/simplEstat.png" height="46px" style="display:inline-block;" width="auto"/>
       </ion-title>
-  </ion-navbar>
-</ion-header>
+  
+      <ion-buttons end>
+        <button ion-button (click)="creditos()">
+          <ion-icon name="information-circle"></ion-icon>
+        </button>
+      </ion-buttons>
+  
+    </ion-navbar>
+  </ion-header>
 
 <ion-content padding>
+    
+           
   <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+        <h1> Ingresar </h1>
 
       <ion-item padding>
           <ion-label floating>Email</ion-label>
@@ -17,7 +31,7 @@
           <p>Porfavor ingrese una email válido.</p>
       </ion-item>
 
-      <ion-item padding>
+      <ion-item padding >
           <ion-label floating>Contraseña</ion-label>
           <ion-input formControlName="password" type="password" [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.dirty"></ion-input>
       </ion-item>
@@ -25,17 +39,17 @@
           <p>Su contraseña necesita mínimo 6 caracteres.</p>
       </ion-item>
 
-      <button ion-button block type="submit" [disabled]="!loginForm.valid">
+      <button ion-button block type="submit" color="home-cardTitle" [disabled]="!loginForm.valid">
           Ingresar
       </button>
 
   </form>
 
-  <button ion-button block clear (click)="goToSignup()">
+  <button ion-button block clear color="home-cardTitle" (click)="goToSignup()">
     Crear una nueva cuenta
   </button>
 
-  <button ion-button block clear (click)="resetPassword()">
+  <button ion-button block clear color="home-cardTitle" (click)="resetPassword()">
     Restablecer Contraseña
   </button>
 
