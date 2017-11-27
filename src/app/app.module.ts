@@ -20,7 +20,6 @@ import { TstudentPage } from '../pages/tstudent/tstudent';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
-import { HttpModule } from '@angular/http';
 import { FirebaseService } from '../providers/firebase-service/firebase-service';
 
 let firebaseConfig = {

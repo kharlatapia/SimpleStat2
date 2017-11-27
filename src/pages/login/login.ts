@@ -100,5 +100,7 @@ export class LoginPage {
     });
     alert.present();
   }
-
+  creditos(){
+    this.navCtrl.push('CreditosPage');
+  }
 }
