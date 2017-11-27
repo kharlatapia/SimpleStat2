@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="primary">
+      <ion-title>
+          Ingresar
+      </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+
+      <ion-item padding>
+          <ion-label floating>Email</ion-label>
+          <ion-input formControlName="email" type="email" [class.invalid]="!loginForm.controls.email.valid && loginForm.controls.email.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty" no-lines>
+          <p>Porfavor ingrese una email válido.</p>
+      </ion-item>
+
+      <ion-item padding>
+          <ion-label floating>Contraseña</ion-label>
+          <ion-input formControlName="password" type="password" [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty" no-lines>
+          <p>Su contraseña necesita mínimo 6 caracteres.</p>
+      </ion-item>
+
+      <button ion-button block type="submit" [disabled]="!loginForm.valid">
+          Ingresar
+      </button>
+
+  </form>
+
+  <button ion-button block clear (click)="goToSignup()">
+    Crear una nueva cuenta
+  </button>
+
+  <button ion-button block clear (click)="resetPassword()">
+    Restablecer Contraseña
+  </button>
+
+</ion-content>
