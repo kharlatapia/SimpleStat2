@@ -57,5 +57,7 @@ export class HomePage {
   tstudent(){
     this.navCtrl.push(TstudentPage);
   }
-
+  salir(){
+    this.navCtrl.push('LoginPage');
+  }
 }
