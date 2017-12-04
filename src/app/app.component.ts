@@ -26,6 +26,7 @@ export class MyApp {
   pagesContinuas: Array<{title: string, component: any}>;
   pagesInicio: Array<{title: string, component: any}>;
 
+
   constructor(public platform: Platform, public StatusBar: StatusBar, public SplashScreen: SplashScreen) {
     this.initializeApp();
 

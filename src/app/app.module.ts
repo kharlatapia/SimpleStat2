@@ -22,6 +22,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { FirebaseService } from '../providers/firebase-service/firebase-service';
 
+import { ChartsModule } from 'ng2-charts';
+
 let firebaseConfig = {
   apiKey: "AIzaSyDFEuzvSX8Un4nuyCB9VJH_KJshOLyZ7E8",
   authDomain: "cmc6412-ce6d7.firebaseapp.com",
@@ -50,7 +52,8 @@ let firebaseConfig = {
     IonicModule.forRoot(MyApp),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
