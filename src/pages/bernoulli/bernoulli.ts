@@ -25,17 +25,15 @@ export class BernoulliPage {
       p: ['', Validators.compose([Validators.required])]
     });
 
-    //this.formulae="`sum_(i=1)^n i^3=((n(n+1))/2)^2`";
+    //this.formulae="sum_(i=1)^n i^3=((n(n+1))/2)^2";
     this.def_text="<p>La distribución Bernoulli, cuyo nombre se debe al científico Suizo Jakob Bernoulli, es un modelo de probabilidad para una variable aleatoria discreta y de característica dicotómica.</p><p>Es una distribución basal para la distribución Binomial. Caracteriza experimentos que pueden ser asociados al experimento de lanzar una moneda, en la cual hay solo dos opciones posibles. Para la determinación de probabilidades en un punto x, ya sea distribución o cuantía, es necesario especificar un parámetro, que denominaremos p y que representa la probabilidad de éxito o de obtención del resultado de interés en un experimento dicotómico. En este contexto se dirá que la variable aleatoria de estudio se distribuye Bernoulli de parámetro $p$.</p><p style='text-align: center;'>$X \\sim  Ber(p)$</p>";
     this.par_text = "$p$: Representa una probabilidad de éxito, por tanto es un valor entre $0$ y $1$, ambos incluidos.";
   }
 
-  public lineChartData:Array<any> = [
-    {data: [0.3,0.9], label: 'Bernoulli'},
-   
-  ];
-  public lineChartLabels:Array<any> = [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1];
-  public lineChartOptions:Array<any> = [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1];
+  public lineChartData:Array<any>;
+  
+  public lineChartLabels:Array<any> = [0,1];
+  public lineChartOptions:Array<any> = [0,1];
 
   public lineChartColors:Array<any> = [
     { // grey
@@ -44,7 +42,7 @@ export class BernoulliPage {
       pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+      pointHoverBorderColor: 'rgba(148,159,177,0.😎'
     },
     { // dark grey
       backgroundColor: 'rgba(77,83,96,0.2)',
@@ -60,7 +58,7 @@ export class BernoulliPage {
       pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+      pointHoverBorderColor: 'rgba(148,159,177,0.😎'
     }
   ];
   public lineChartLegend:boolean = true;
@@ -93,7 +91,11 @@ export class BernoulliPage {
       this.buttonDisabled = true;
     }
 
+    this.lineChartData = [
+      {data: [parseFloat(this.bernoulli[1]).toFixed(3), parseFloat(this.bernoulli[0]).toFixed(3)], label: 'Bernoulli'},
+     
+    ];
+
   }
 
 }
-

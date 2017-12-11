@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
+
+
 import * as stat from "simple-statistics";
 import * as math from "mathjs";
-
 
 @Component({
   selector: 'page-binomial',
@@ -42,6 +43,45 @@ export class BinomialPage {
     this.text4 = "<p>$n$: Tamaño de la muestra (número entero).</p>";
     this.text5 = "<p>$x$: Número de éxitos esperados (número entero).</p>";
     this.par_text = this.text3 + this.text4 + this.text5;
+  }
+  public barChartOptions:any = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+  public barChartLabels:number[] = [];
+  public barChartType:string = 'bar';
+  public barChartLegend:boolean = true;
+ 
+  public barChartData:any[];
+ 
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+ 
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
+ 
+  public randomize():void {
+    // Only Change 3 values
+    let data = [
+      Math.round(Math.random() * 100),
+      59,
+      80,
+      (Math.random() * 100),
+      56,
+      (Math.random() * 100),
+      40];
+    let clone = JSON.parse(JSON.stringify(this.barChartData));
+    clone[0].data = data;
+    this.barChartData = clone;
+    /**
+     * (My guess), for Angular to recognize the change in the dataset
+     * it has to change the dataset variable directly,
+     * so one way around it, is to clone the data, change it and then
+     * assign it;
+     */
   }
 
   binomialCalc(){
@@ -82,7 +122,12 @@ export class BinomialPage {
         buttons: ['OK']
       });
       alert.present();
+   
     }
+    this.barChartData = [
+      {data: [ binomial.toFixed(3),EX.toFixed(3) , VX.toFixed(3) ], label: 'Series A'},
+     
+    ];
   }
 
   reset(){
@@ -92,5 +137,5 @@ export class BinomialPage {
     this.res_text = null;
   }
 
-
+  
 }
