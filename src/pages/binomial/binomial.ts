@@ -44,15 +44,19 @@ export class BinomialPage {
     this.text5 = "<p>$x$: Número de éxitos esperados (número entero).</p>";
     this.par_text = this.text3 + this.text4 + this.text5;
   }
+
+  
   public barChartOptions:any = {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels:number[] = [];
+  public barChartLabels:number[] = [0,10,20,30,40,50];
   public barChartType:string = 'bar';
   public barChartLegend:boolean = true;
  
-  public barChartData:any[];
+  public barChartData:any[] = [
+    {data: [0], label: 'Binomial'},
+  ];
  
   // events
   public chartClicked(e:any):void {
@@ -63,26 +67,7 @@ export class BinomialPage {
     console.log(e);
   }
  
-  public randomize():void {
-    // Only Change 3 values
-    let data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      (Math.random() * 100),
-      56,
-      (Math.random() * 100),
-      40];
-    let clone = JSON.parse(JSON.stringify(this.barChartData));
-    clone[0].data = data;
-    this.barChartData = clone;
-    /**
-     * (My guess), for Angular to recognize the change in the dataset
-     * it has to change the dataset variable directly,
-     * so one way around it, is to clone the data, change it and then
-     * assign it;
-     */
-  }
+  
 
   binomialCalc(){
 
@@ -105,6 +90,12 @@ export class BinomialPage {
         this.visible = true;
         this.res_text = "<p>$p(X= " + x + ")=" + binomial.toFixed(3) + "$</p><p>$p(X\\leq" + x + ")=" + (stat.sumSimple(suma)).toFixed(3) + "$</p><p>$E(X)=" + EX.toFixed(3) + "$</p><p>$V(X)="+ VX.toFixed(3) + "$</p>";
         this.buttonDisabled = true;
+     
+        this.barChartData = [
+          {data: [ parseFloat(binomial.toFixed(3)),parseFloat((stat.sumSimple(suma)).toFixed(3)), parseFloat(EX.toFixed(3)), parseFloat(VX.toFixed(3))  ], label: 'Binomial'},
+         
+        ];
+
       }else{
         this.visible = false;
         let alert = this.alertCtrl.create({
@@ -124,10 +115,6 @@ export class BinomialPage {
       alert.present();
    
     }
-    this.barChartData = [
-      {data: [ binomial.toFixed(3),EX.toFixed(3) , VX.toFixed(3) ], label: 'Series A'},
-     
-    ];
   }
 
   reset(){
@@ -139,3 +126,4 @@ export class BinomialPage {
 
   
 }
+

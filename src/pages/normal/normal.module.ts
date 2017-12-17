@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { NormalPage } from './normal';
+import { ChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -8,6 +10,7 @@ import { NormalPage } from './normal';
   ],
   imports: [
     IonicPageModule.forChild(NormalPage),
+    ChartsModule,
   ],
 })
 export class NormalPageModule {}

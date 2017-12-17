@@ -60,6 +60,20 @@
     {{res_text}}
     <p>&nbsp;</p>
   </ion-card-content>
+  <ion-content padding>
+    <div>
+      <div style="display: block">
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div> 
+  </ion-content>
 
   <p style="text-align: center; color: grey;"><small>&copy; 2017 | Universidad de Playa Ancha de Ciencias de la Educación</small></p>
   <img src="assets/imgs/Lab[e]saM.png">

@@ -32,6 +32,35 @@ export class ChiPage {
   }
 
 
+  public lineChartData:Array<any>;
+  
+  public lineChartLabels:Array<any> = [-10,0,10];
+  public lineChartOptions:Array<any> = [-10,0,10];
+
+  public lineChartColors:Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.😎'
+    },
+    
+  ];
+  public lineChartLegend:boolean = true;
+  public lineChartType:string = 'line';
+  
+  
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+  
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
+
   chiCalc(){
 
     var x = Number(this.prueba.value.binx);
@@ -45,6 +74,11 @@ export class ChiPage {
         this.visible = true;
         this.res_text = "<p>$p(X\\leq" + x + ")=" + chi.toFixed(3) + "$</p>";
         this.buttonDisabled = true;
+
+        this.lineChartData = [
+      
+          {data: [x, parseFloat(chi.toFixed(3))] , label:'Chi' }
+        ];
       }else{
         this.visible = false;
         let alert = this.alertCtrl.create({

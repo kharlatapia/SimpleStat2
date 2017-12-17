@@ -92,10 +92,10 @@ export class BernoulliPage {
     }
 
     this.lineChartData = [
-      {data: [parseFloat(this.bernoulli[1]).toFixed(3), parseFloat(this.bernoulli[0]).toFixed(3)], label: 'Bernoulli'},
-     
+      {data: [parseFloat(this.bernoulli[1]).toFixed(3)], label: 'p'},
+      {data: [parseFloat(this.bernoulli[0]).toFixed(3)], label: 'q'},
     ];
 
   }
-
+  
 }

@@ -40,6 +40,29 @@ export class PoissonPage {
 
     this.par_text = text6 + text7;
   }
+  public barChartOptions:any = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+  public barChartLabels:string[] = ['0', '10', '20', '30', '40', '50'];
+  public barChartType:string = 'bar';
+  public barChartLegend:boolean = true;
+ 
+  public barChartData:any[] = [
+    {data: [0], label: 'P(X=x)' },
+    {data: [0], label: 'Lamda' }
+  ];
+ 
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+ 
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
+ 
+
 
   poissonCalc(){
 
@@ -58,6 +81,12 @@ export class PoissonPage {
         this.visible = true;
         this.res_text = "<p>$p(X= " + x + ")=" + poisson.toFixed(3) + "$</p><p>$p(X\\leq" + x + ")=" + (stat.sumSimple(suma)).toFixed(3) + "$</p><p>$E(X)=" + lambda.toFixed(3) + "$</p><p>$V(X)="+ lambda.toFixed(3) + "$</p>";
         this.buttonDisabled = true;
+
+        this.barChartData = [
+          {data: [parseFloat(poisson.toFixed(3)), parseFloat(stat.sumSimple(suma)).toFixed(3)], label: 'P(X=x)'},
+          {data: [lambda], label: 'Lamda'},
+          
+        ];
       }
     }else{
       this.visible = false;

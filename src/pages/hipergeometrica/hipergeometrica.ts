@@ -46,6 +46,35 @@ export class HipergeometricaPage {
     this.par_text = text7 + text8 + text9 + text6;
   }
 
+  public barChartData:Array<any>;
+  
+  public barChartLabels:Array<any> = [-10,0,10];
+  public barChartOptions:Array<any> = [-10,0,10];
+
+  public barChartColors:Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.😎'
+    },
+    
+  ];
+  public barChartLegend:boolean = true;
+  public barChartType:string = 'bar';
+  
+  
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+  
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
+
   hipergeometricaCalc(){
 
     var x = Number(this.prueba.value.binx);
@@ -65,7 +94,14 @@ export class HipergeometricaPage {
         this.visible = true;
         this.res_text = "<p>$p(X= " + x + ")=" + hipergeometrica.toFixed(3) + "$</p><p>$p(X\\leq" + x + ")=" + (stat.sumSimple(suma)).toFixed(3) + "$</p>";
         this.buttonDisabled = true;
+        
+        this.barChartData = [
+          {data: [x], label: 'x' },
+          {data: [parseFloat(hipergeometrica.toFixed(3))] , label:'hipergeometrica' }
+        ];
       }
+
+    
     }else{
       this.visible = false;
       let alert = this.alertCtrl.create({

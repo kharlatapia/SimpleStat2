@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, Loading, LoadingController, NavController, AlertController } from 'ionic-angular';
+import { IonicPage, Loading, LoadingController, NavController, AlertController, MenuController } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { FirebaseService } from '../../providers/firebase-service/firebase-service';
 import { HomePage } from '../home/home';
@@ -19,6 +19,7 @@ export class LoginPage {
     public firebaseService: FirebaseService,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
+    public menuCtrl: MenuController,
     public formBuilder: FormBuilder) {
 
     this.loginForm = formBuilder.group({
@@ -27,6 +28,7 @@ export class LoginPage {
     });
 
   }
+ 
 
 
   loginUser(): void {
@@ -102,5 +104,7 @@ export class LoginPage {
   }
   creditos(){
     this.navCtrl.push('CreditosPage');
+
   }
+  
 }

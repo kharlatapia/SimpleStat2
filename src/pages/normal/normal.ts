@@ -49,6 +49,36 @@ export class NormalPage {
     
   }
 
+  public lineChartData:Array<any>;
+  
+  public lineChartLabels:Array<any> = [-10,0,10];
+  public lineChartOptions:Array<any> = [-10,0,10];
+
+  public lineChartColors:Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.😎'
+    },
+    
+  ];
+  public lineChartLegend:boolean = true;
+  public lineChartType:string = 'line';
+  
+  
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+  
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
+
+
   exponencialCalc(){
     var media = Number(this.prueba.value.media);
     var desvest = Number(this.prueba.value.desvest);
@@ -68,6 +98,11 @@ export class NormalPage {
           this.visible = true;
           this.res_text = "<p>$Z=" + z.toFixed(3) + "$</p><p>$P(X \\leq x) = \\phi(Z = " + z.toFixed(3) + ") =" + normal.toFixed(3) + "$</p>";
           this.buttonDisabled = true;
+
+    this.lineChartData = [
+      {data: [media-desvest, media, media-desvest], label: 'x' },
+      {data: [parseFloat(normal.toFixed(3))] , label:'Normal' }
+    ];
         }else{
           this.visible = false;
           this.buttonDisabled = true;

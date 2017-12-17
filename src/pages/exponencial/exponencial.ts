@@ -44,7 +44,49 @@ export class ExponencialPage {
     this.par_text = text6;
     this.text7 = "<p>$P(X \\leqslant x)$</p>"
   }
+  public lineChartData:Array<any>;
+  
+  public lineChartLabels:Array<any> = [0,1];
+  public lineChartOptions:Array<any> = [0,1];
 
+  public lineChartColors:Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.😎'
+    },
+    { // dark grey
+      backgroundColor: 'rgba(77,83,96,0.2)',
+      borderColor: 'rgba(77,83,96,1)',
+      pointBackgroundColor: 'rgba(77,83,96,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(77,83,96,1)'
+    },
+    { // grey
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.😎'
+    }
+  ];
+  public lineChartLegend:boolean = true;
+  public lineChartType:string = 'line';
+  
+  
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+  
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
   exponencialCalc(){
     var E = Number(this.prueba.value.binE);
     var x = Number(this.prueba.value.binx);
@@ -57,6 +99,11 @@ export class ExponencialPage {
         this.visible = true;
         this.res_text = "<p>$\\lambda = " + lambda.toFixed(3) + "$</p><p>$P(X \\leqslant " + x + ")=" + exponencial.toFixed(3) + "$</p>";
         this.buttonDisabled = true;
+
+        this.lineChartData = [
+          {data: [parseFloat(lambda.toFixed(3)),parseFloat(exponencial.toFixed(3))], label: 'Exponencial'},
+         
+        ];
       }else{
         this.visible = false;
         let alert = this.alertCtrl.create({
